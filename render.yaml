@@ -1,12 +1,6 @@
-databases:
-  - name: my_site
-    databaseName: my_site
-    user: my_site
-    plan: free
-
 services:
   - type: web
-    name: my_site
+    name: bold_river_web
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -14,10 +8,6 @@ services:
     # preDeployCommand: "bundle exec rails db:migrate" 
     startCommand: "bundle exec rails server"
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: my_site
-          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
